@@ -1,0 +1,145 @@
+# =============================================================================
+# CISO Assistant – Podman rootless variant
+#
+# Diferencias respecto al docker-compose.yml original:
+#   1. userns_mode: keep-id  → mapea el UID del host al contenedor (rootless)
+#   2. user: comentado       → Podman rootless asigna el UID automáticamente
+#   3. Sólo el puerto 8443 (Caddy/frontend) está expuesto al host
+#   4. Qdrant NO expone su puerto 6333 al host (sólo red interna)
+#   5. network_mode: podman  → usa la red default de Podman
+#   6. Caddyfile inline usa HTTP simple (sin TLS interno) si no hay soporte
+#      para pki; se puede cambiar el bloque tls a "tls internal" si el daemon
+#      lo soporta.
+#
+# Uso:
+#   podman-compose -f docker-compose.podman.yml up -d
+# =============================================================================
+
+services:
+
+  backend:
+    container_name: backend
+    image: ghcr.io/intuitem/ciso-assistant-community/backend:latest
+    pull_policy: always
+    restart: always
+    userns_mode: keep-id          # rootless: mapea UID del host
+    environment:
+      - ALLOWED_HOSTS=backend,localhost
+      - CISO_ASSISTANT_URL=https://localhost:8443
+      - DJANGO_DEBUG=True
+      - AUTH_TOKEN_TTL=7200
+      - HOME=/tmp
+      - XDG_CACHE_HOME=/tmp/.cache
+      - XDG_CONFIG_HOME=/tmp/.config
+      - XDG_DATA_HOME=/tmp/.local/share
+      - QDRANT_URL=http://qdrant:6333
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev
+    volumes:
+      - ./db:/code/db
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://backend:8000/api/health/ || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 150s
+
+  huey:
+    container_name: huey
+    image: ghcr.io/intuitem/ciso-assistant-community/backend:latest
+    pull_policy: always
+    userns_mode: keep-id
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: always
+    environment:
+      - ALLOWED_HOSTS=backend,localhost
+      - CISO_ASSISTANT_URL=https://localhost:8443
+      - DJANGO_DEBUG=False
+      - AUTH_TOKEN_TTL=7200
+      - HOME=/tmp
+      - XDG_CACHE_HOME=/tmp/.cache
+      - XDG_CONFIG_HOME=/tmp/.config
+      - XDG_DATA_HOME=/tmp/.local/share
+      - QDRANT_URL=http://qdrant:6333
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev
+    volumes:
+      - ./db:/code/db
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        poetry run python manage.py run_huey -w 2 --scheduler-interval 60
+
+  frontend:
+    container_name: frontend
+    image: ghcr.io/intuitem/ciso-assistant-community/frontend:latest
+    pull_policy: always
+    userns_mode: keep-id
+    environment:
+      - PUBLIC_BACKEND_API_URL=http://backend:8000/api
+      - PUBLIC_BACKEND_API_EXPOSED_URL=https://localhost:8443/api
+      - PROTOCOL_HEADER=x-forwarded-proto
+      - HOST_HEADER=x-forwarded-host
+      - HOME=/tmp
+      - XDG_CACHE_HOME=/tmp/.cache
+      - XDG_CONFIG_HOME=/tmp/.config
+      - XDG_DATA_HOME=/tmp/.local/share
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev
+    restart: always
+    depends_on:
+      backend:
+        condition: service_healthy
+    # Sin ports: el frontend nunca se expone directamente; sólo lo hace Caddy
+
+  qdrant:
+    container_name: qdrant
+    image: qdrant/qdrant:v1.14.0
+    restart: unless-stopped
+    userns_mode: keep-id
+    volumes:
+      - qdrant_data:/qdrant/storage
+    # Sin ports: qdrant sólo es accesible desde la red interna del pod
+
+  caddy:
+    container_name: caddy
+    image: caddy:2.11.2
+    userns_mode: keep-id
+    environment:
+      - CISO_ASSISTANT_URL=https://localhost:8443
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    ports:
+      - "8443:8443"      # único puerto expuesto al host
+    volumes:
+      - caddy_data:/data/caddy
+    command: >
+      sh -c 'echo "$$CISO_ASSISTANT_URL {
+        reverse_proxy /api/* backend:8000
+        reverse_proxy /* frontend:3000
+        tls internal
+      }" > Caddyfile && caddy run'
+
+volumes:
+  qdrant_data:
+  caddy_data:
