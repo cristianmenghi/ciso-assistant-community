@@ -1,0 +1,237 @@
+---
+
+urn: urn:intuitem:risk:library:mapping-mcu-5.0-to-nist-csf-2.0
+locale: es
+ref_id: mapping-mcu-5.0-to-nist-csf-2.0
+name: MCU 5.0 -> NIST CSF 2.0
+description: Mapeo del Marco de Ciberseguridad de AGESIC (MCU 5.0) al framework NIST CSF 2.0
+copyright: AGESIC / intuitem
+version: 1
+publication_date: 2026-04-22
+provider: AGESIC
+packager: intuitem
+dependencies:
+- urn:intuitem:risk:library:mcu-5.0
+- urn:intuitem:risk:library:nist-csf-2.0
+objects:
+  requirement_mapping_sets:
+  - urn: urn:intuitem:risk:req_mapping_set:mcu-5.0-to-nist-csf-2.0
+    ref_id: mapping-mcu-5.0-to-nist-csf-2.0
+    name: MCU 5.0 -> NIST CSF 2.0
+    description: Mapeo del MCU 5.0 a NIST CSF 2.0
+    source_framework_urn: urn:intuitem:risk:framework:mcu-5.0
+    target_framework_urn: urn:intuitem:risk:framework:nist-csf-2.0
+    requirement_mappings:
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ps-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.po-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:or-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.rr-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:or-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.rr-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:or-3
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:rs.co-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:or-4
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.oc-03
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:or-5
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:id.am-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:or-6
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.aa-05
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:or-7
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.oc-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:pl-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.rm-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gr-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.rm-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gr-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:id.ra-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gr-4
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:id.ra-09
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gh-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.rr-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gh-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.at-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gh-3
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.at-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ga-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:id.am-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ga-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:id.am-05
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ga-3
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.at-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ga-4
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ga-5
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ca-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.aa-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ca-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.aa-05
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ca-3
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ca-4
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ca-5
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.aa-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ca-6
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.aa-05
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:sf-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ps-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:sf-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ps-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:sf-3
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ps-04
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:sf-4
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ps-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:sf-5
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ps-05
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:so-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:id.ra-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:so-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ps-06
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:so-3
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:so-4
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:so-5
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:so-6
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-11
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:so-7
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:de.cm-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:so-8
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:sc-6
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.oc-03
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:sc-12
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:sc-13
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:de.cm-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:sc-14
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:sc-15
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ad-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ps-06
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:ad-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.sc-04
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:rp-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.sc-04
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:rp-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.sc-06
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gi-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:rs.ma-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gi-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:de.ae-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gi-3
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:rs.co-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gi-4
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:rs.ma-04
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gi-5
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:rs.mi-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:gi-6
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:rs.an-03
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:co-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:rc.rp-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:co-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:rc.rp-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:co-4
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:rc.rp-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:co-5
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.oc-04
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:co-6
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:rc.co-03
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:cn-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.oc-03
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:cn-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:id.im-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:cn-3
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:id.im-03
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:cn-4
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:id.am-02
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:pd-1
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:gv.oc-03
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:pd-2
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:pd-3
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:pd-4
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:pd-5
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:pd-6
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:pd-7
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
+    - source_requirement_urn: urn:intuitem:risk:req_node:mcu-5.0:pd-8
+      target_requirement_urn: urn:intuitem:risk:req_node:nist-csf-2.0:pr.ds-01
+      relationship: intersect
