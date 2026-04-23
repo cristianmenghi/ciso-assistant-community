@@ -122,7 +122,7 @@ services:
   caddy:
     container_name: caddy
     image: caddy:2.11.2
-    userns_mode: keep-id
+    # Sin userns_mode ni read_only: Caddy necesita escribir estado TLS en /data y /config
     depends_on:
       backend:
         condition: service_healthy
@@ -131,8 +131,8 @@ services:
       - "8443:8443"      # único puerto expuesto al host
     volumes:
       - caddy_data:/data/caddy
-      - ./Caddyfile.podman:/etc/caddy/Caddyfile:ro  # montado read-only desde el host
-    # sin command: Caddy usa /etc/caddy/Caddyfile por defecto
+      - ./Caddyfile.podman:/etc/caddy/Caddyfile:ro
+    command: caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
 
 volumes:
   qdrant_data:
