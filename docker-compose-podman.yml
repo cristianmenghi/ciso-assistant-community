@@ -20,7 +20,7 @@ services:
   backend:
     container_name: backend
     image: ghcr.io/intuitem/ciso-assistant-community/backend:latest
-    pull_policy: always
+    pull_policy: missing         # sólo descarga si no existe localmente
     restart: always
     userns_mode: keep-id          # rootless: mapea UID del host
     environment:
@@ -52,7 +52,7 @@ services:
   huey:
     container_name: huey
     image: ghcr.io/intuitem/ciso-assistant-community/backend:latest
-    pull_policy: always
+    pull_policy: missing
     userns_mode: keep-id
     depends_on:
       backend:
@@ -86,7 +86,7 @@ services:
   frontend:
     container_name: frontend
     image: ghcr.io/intuitem/ciso-assistant-community/frontend:latest
-    pull_policy: always
+    pull_policy: missing
     userns_mode: keep-id
     environment:
       - PUBLIC_BACKEND_API_URL=http://backend:8000/api
